@@ -1,0 +1,6 @@
+com/rosed/elemental/Elemental.class
+com/rosed/elemental/PlayerManager.class
+com/rosed/elemental/ElementalPlayer.class
+com/rosed/elemental/Enums/Element.class
+com/rosed/elemental/Commands/SummonTrader.class
+com/rosed/elemental/Enums/Trader.class

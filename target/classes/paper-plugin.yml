@@ -1,0 +1,4 @@
+name: Elemental
+version: '1.0-SNAPSHOT'
+main: com.rosed.elemental.Elemental
+api-version: '1.20'
