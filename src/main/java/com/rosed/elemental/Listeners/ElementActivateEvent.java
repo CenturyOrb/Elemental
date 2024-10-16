@@ -35,9 +35,9 @@ public class ElementActivateEvent implements Listener {
             try  {
                 switch (element) {
                     case LEAP:
-                        playerManager.addCooldowon(uuid);
-                        Element.leap(player);
                         player.sendMessage(ChatColor.GREEN + "Used LEAP");
+                        playerManager.addCooldown(uuid);
+                        Element.leap(player);
                         break;
                 }
             } catch (NullPointerException e) {

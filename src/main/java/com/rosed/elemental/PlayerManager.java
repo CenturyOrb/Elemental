@@ -4,6 +4,10 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.rosed.elemental.Enums.Element;
 import org.bukkit.Bukkit;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -63,7 +67,16 @@ public enum PlayerManager {
      * Adds player on the cooldown for 30s
      * @param uuid player's UUID
      */
-    public void addCooldowon(UUID uuid) { elementCooldown.put(uuid, System.currentTimeMillis() + 30000); }
+    public void addCooldown(UUID uuid) {
+        elementCooldown.put(uuid, System.currentTimeMillis() + 30000);
+        Bukkit.getScheduler().runTaskLater(Elemental.getInstance(), () -> {
+            Player player =  Bukkit.getPlayer(uuid);
+            World world = Bukkit.getPlayer(uuid).getWorld();
+            world.playSound(player.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);
+            world.spawnParticle(Particle.END_ROD, player.getLocation(), 10, 0.1, 0.1, 0.1);
+            world.spawnParticle(Particle.END_ROD, player.getEyeLocation(), 10, 0.1, 0.0, 0.1);
+        }, 30 * 20);
+    }
 
     public HashMap<UUID, ElementalPlayer> getPlayers() { return players; }
 }
