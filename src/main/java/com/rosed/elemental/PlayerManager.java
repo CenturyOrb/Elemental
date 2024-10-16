@@ -56,10 +56,16 @@ public enum PlayerManager {
 
     /**
      * Checks if player is on element cooldown
-     * @param player player
+     * @param uuid player's UUID
      * @return true if on cooldown, otherwise false
      */
-    public boolean onCooldown(Player player) { return elementCooldown.asMap().containsKey(player.getUniqueId()); }
+    public boolean onCooldown(UUID uuid) { return elementCooldown.asMap().containsKey(uuid); }
+
+    /**
+     * Adds player on the cooldown for 30s
+     * @param uuid player's UUID
+     */
+    public void addCooldowon(UUID uuid) { elementCooldown.put(uuid, System.currentTimeMillis() + 30000); }
 
     public HashMap<UUID, ElementalPlayer> getPlayers() { return players; }
 }

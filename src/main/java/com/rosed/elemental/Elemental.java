@@ -7,6 +7,7 @@ import com.rosed.elemental.Commands.SummonTrader;
 import com.rosed.elemental.Listeners.ElementActivateEvent;
 import com.rosed.elemental.Listeners.PlayerConnectionEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import revxrsal.commands.Lamp;
 import revxrsal.commands.bukkit.BukkitLamp;
@@ -83,6 +84,10 @@ public final class Elemental extends JavaPlugin {
                     List<ElementalPlayer> players = gson.fromJson(json, playerListType);
                     for (ElementalPlayer player : players) {
                         playerManager.addPlayer(player.getUUID(), player.getElement());
+                    }
+
+                    for (Player player : Bukkit.getOnlinePlayers()) {
+                        playerManager.getPlayer(player.getUniqueId());
                     }
                 } else {
                     getLogger().warning("Player data JSON file is empty. No players loaded.");
