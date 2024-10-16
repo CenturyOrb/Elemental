@@ -6,7 +6,9 @@ import com.rosed.elemental.Commands.DebugCommands;
 import com.rosed.elemental.Commands.SummonTrader;
 import com.rosed.elemental.Listeners.ElementActivateEvent;
 import com.rosed.elemental.Listeners.PlayerConnectionEvent;
+import com.rosed.elemental.Listeners.PlayerPotionConsume;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import revxrsal.commands.Lamp;
@@ -28,6 +30,8 @@ public final class Elemental extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // PDC
+        NamespacedKey key = new NamespacedKey(this, "elemental");
         instance = this;
         playerManager = PlayerManager.INSTANCE;
         registerEvents();
@@ -55,6 +59,7 @@ public final class Elemental extends JavaPlugin {
     private void registerEvents() {
         Bukkit.getPluginManager().registerEvents(new ElementActivateEvent(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerConnectionEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerPotionConsume(), this);
     }
 
     /**
