@@ -2,9 +2,11 @@ package com.rosed.elemental;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.rosed.elemental.Enums.Element;
 import org.bukkit.entity.Player;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -31,11 +33,26 @@ public enum PlayerManager {
         return players.get(uuid);
     }
 
+    public void addPlayer(UUID uuid, Element element) {
+        players.put(uuid, new ElementalPlayer(uuid, element));
+    }
+
     /**
      * Removes pairing of UUID and ElementalPlayer
      * @param uuid player's UUID
      */
     public void removePlayer(UUID uuid) { players.remove(uuid); }
+
+    public List<ElementalPlayer> playersWithElement() {
+        ArrayList<ElementalPlayer> elementPlayers = new ArrayList<>();
+
+        for (ElementalPlayer player : players.values()) {
+            if (player.getElement() != null)
+                elementPlayers.add(player);
+        }
+
+        return elementPlayers;
+    }
 
     /**
      * Checks if player is on element cooldown

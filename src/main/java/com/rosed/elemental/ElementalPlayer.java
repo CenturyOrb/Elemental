@@ -1,7 +1,6 @@
 package com.rosed.elemental;
 
 import com.rosed.elemental.Enums.Element;
-
 import java.util.UUID;
 
 public class ElementalPlayer {
@@ -23,5 +22,5 @@ public class ElementalPlayer {
     public Element getElement() { return element; }
 
     public void setUuid(UUID uuid) { this.uuid = uuid; }
-    public UUID getUuid() { return uuid; }
+    public UUID getUUID() { return uuid; }
 }

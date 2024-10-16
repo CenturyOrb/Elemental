@@ -2,7 +2,6 @@ package com.rosed.elemental.Listeners;
 
 import com.rosed.elemental.ElementalPlayer;
 import com.rosed.elemental.PlayerManager;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -12,22 +11,21 @@ import java.util.UUID;
 
 public class PlayerConnectionEvent implements Listener {
 
+    /**
+     * Adds players with no elements to the PlayerManager
+     * @param event PlayerJoinEvent
+     */
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        /*
-        add to playermanager if the player isnt already in playermanager
-        this only happens when a player without an element joins
-         */
         PlayerManager.INSTANCE.getPlayer(event.getPlayer().getUniqueId());
     }
 
+    /**
+     * Removes players with no elements from the PlayerManager
+     * @param event PlayerQuitEvent
+     */
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent event) {
-        /*
-        if player without element leaves, remove them from
-        playermanager
-        this only happens when the player without an element leaves
-         */
         PlayerManager playerManager = PlayerManager.INSTANCE;
         UUID uuid = event.getPlayer().getUniqueId();
         ElementalPlayer ePlayer = playerManager.getPlayer(uuid);
