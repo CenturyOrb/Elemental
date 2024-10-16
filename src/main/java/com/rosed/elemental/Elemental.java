@@ -69,12 +69,11 @@ public final class Elemental extends JavaPlugin {
             // makes the directory for the plugin
             if (!getDataFolder().exists())
                 getDataFolder().mkdirs();
-            // gets data.json file
+            // gets player.json file
             file = new File(getDataFolder(), "player.json");
             // (1) if player.json doesn't exist then make it
-            // only happens the first time the plugin runs
             // (2) if player.json does exist then read the data and
-            // update the respawnTime instance variable in event
+            // update the PlayerManager players HashMap
             if (!file.exists()) {
                 file.createNewFile();
             } else {
