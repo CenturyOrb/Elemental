@@ -1,6 +1,9 @@
+/home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Commands/DebugCommands.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Commands/SummonTrader.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Elemental.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/ElementalPlayer.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Enums/Element.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Enums/Trader.java
+/home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Listeners/ElementActivateEvent.java
+/home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Listeners/PlayerConnectionEvent.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/PlayerManager.java

@@ -1,7 +1,9 @@
 package com.rosed.elemental;
 
+import com.rosed.elemental.Commands.DebugCommands;
 import com.rosed.elemental.Commands.SummonTrader;
 import com.rosed.elemental.Listeners.ElementActivateEvent;
+import com.rosed.elemental.Listeners.PlayerConnectionEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import revxrsal.commands.Lamp;
@@ -16,7 +18,7 @@ public final class Elemental extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        playerManager = new PlayerManager();
+        playerManager = PlayerManager.INSTANCE;
         registerEvents();
         registerCommands();
 
@@ -36,6 +38,7 @@ public final class Elemental extends JavaPlugin {
     private void registerCommands() {
         Lamp<BukkitCommandActor> lamp = BukkitLamp.builder(this).build();
         lamp.register(new SummonTrader());
+        lamp.register(new DebugCommands());
     }
 
     /**
@@ -43,6 +46,7 @@ public final class Elemental extends JavaPlugin {
      */
     private void registerEvents() {
         Bukkit.getPluginManager().registerEvents(new ElementActivateEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerConnectionEvent(), this);
     }
 
     public static Elemental getInstance() { return instance; }

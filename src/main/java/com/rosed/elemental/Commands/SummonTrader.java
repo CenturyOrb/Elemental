@@ -37,7 +37,7 @@ public class SummonTrader {
         List<MerchantRecipe> trades = new ArrayList<>();
         MerchantRecipe trade;
         if (traderName == Trader.AMBROSIA) {
-            trader.setCustomName(ChatColor.AQUA + "SpecialTrader");
+            trader.setCustomName(ChatColor.RED + "Ambrosia");
             trader.setCustomNameVisible(true);
             trader.setInvulnerable(true);
             trader.setAI(false);
