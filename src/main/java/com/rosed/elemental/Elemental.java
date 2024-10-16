@@ -32,7 +32,6 @@ public final class Elemental extends JavaPlugin {
         playerManager = PlayerManager.INSTANCE;
         registerEvents();
         registerCommands();
-
         loadJSON();
     }
 

@@ -3,11 +3,9 @@ package com.rosed.elemental;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.rosed.elemental.Enums.Element;
-import org.bukkit.entity.Player;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import org.bukkit.Bukkit;
+
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public enum PlayerManager {
