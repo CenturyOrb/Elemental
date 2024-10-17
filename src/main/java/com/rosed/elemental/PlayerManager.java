@@ -70,6 +70,7 @@ public enum PlayerManager {
     public void addCooldown(UUID uuid) {
         elementCooldown.put(uuid, System.currentTimeMillis() + 30000);
         Bukkit.getScheduler().runTaskLater(Elemental.getInstance(), () -> {
+            if (Bukkit.getPlayer(uuid) == null) return;
             Player player =  Bukkit.getPlayer(uuid);
             World world = Bukkit.getPlayer(uuid).getWorld();
             world.playSound(player.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 1.0f, 2.0f);

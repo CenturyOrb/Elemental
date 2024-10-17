@@ -26,7 +26,7 @@ public class SummonTrader {
 
     @Command("summontrader")
     @CommandPermission("elemental.operator")
-    public void hello(Player player, Trader trader) {
+    public void summonTrader(Player player, Trader trader) {
         // Command logic here
         spawnTrader(player, trader);
     }
