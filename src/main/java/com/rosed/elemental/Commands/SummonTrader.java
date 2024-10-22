@@ -42,6 +42,7 @@ public class SummonTrader {
         MerchantRecipe trade;
         if (traderName == Trader.AMBROSIA) {
             trader.setCustomName(ChatColor.RED + "Ambrosia");
+            trader.setProfession(Villager.Profession.CLERIC);
             trader.setCustomNameVisible(true);
             trader.setInvulnerable(true);
             trader.setAI(false);
