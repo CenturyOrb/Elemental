@@ -39,6 +39,10 @@ public class ElementActivateEvent implements Listener {
                         playerManager.addCooldown(uuid);
                         Element.leap(player);
                         break;
+                    case FIREBALL:
+                        player.sendMessage(ChatColor.GREEN + "Used FIREBALL");
+                        playerManager.addCooldown(uuid);
+                        Element.fireball(player);
                 }
             } catch (NullPointerException e) {
                 player.sendMessage(ChatColor.RED + "Unknown element");

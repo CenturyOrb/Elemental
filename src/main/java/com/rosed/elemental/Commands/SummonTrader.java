@@ -51,7 +51,15 @@ public class SummonTrader {
             trades.add(trade);
             trader.setRecipes(trades);
         } else if (traderName == Trader.CINTHIA) {
-            player.sendMessage("Havent added Cinthia yet");
+            trader.setCustomName(ChatColor.RED + "Cinthia");
+            trader.setCustomNameVisible(true);
+            trader.setInvulnerable(true);
+            trader.setAI(false);
+
+            trade = new MerchantRecipe(createFireballConcoction(), 9999); // Max uses of trade
+            trade.addIngredient(new ItemStack(Material.FLINT_AND_STEEL)); // The required item (Ender Dragon Egg)
+            trades.add(trade);
+            trader.setRecipes(trades);
         }
     }
 
@@ -85,4 +93,34 @@ public class SummonTrader {
         return potion;
     }
 
+
+    /**
+     * Creates ItemStack of Fireball Concoction
+     * @return Fireball Concoction ItemStack
+     */
+    public ItemStack createFireballConcoction() {
+        ItemStack potion = new ItemStack(Material.POTION);
+        PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
+
+        potionMeta.setDisplayName(ChatColor.RED + "Fireball Concoction");
+        // PDC Key
+        NamespacedKey key = new NamespacedKey(Elemental.getInstance(), "elemental");
+        // PDC Meta
+        PersistentDataContainer pdc = potionMeta.getPersistentDataContainer();
+        pdc.set(key, PersistentDataType.STRING, "fireball");
+
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.DARK_PURPLE + "A mysterious potion");
+        lore.add("");
+        lore.add(ChatColor.GREEN + "- Grants ability to throw fireballs");
+        potionMeta.setLore(lore);
+
+        potionMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        potionMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        potionMeta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+
+        potion.setItemMeta(potionMeta);
+
+        return potion;
+    }
 }
