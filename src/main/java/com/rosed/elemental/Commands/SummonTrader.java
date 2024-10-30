@@ -26,7 +26,7 @@ public class SummonTrader {
 
     @Command("summontrader")
     @CommandPermission("elemental.operator")
-    public void hello(Player player, Trader trader) {
+    public void summonTrader(Player player, Trader trader) {
         // Command logic here
         spawnTrader(player, trader);
     }
@@ -42,6 +42,7 @@ public class SummonTrader {
         MerchantRecipe trade;
         if (traderName == Trader.AMBROSIA) {
             trader.setCustomName(ChatColor.RED + "Ambrosia");
+            trader.setProfession(Villager.Profession.CLERIC);
             trader.setCustomNameVisible(true);
             trader.setInvulnerable(true);
             trader.setAI(false);
@@ -67,7 +68,7 @@ public class SummonTrader {
      * Creates ItemStack of Leaproot Concoction
      * @return Leaproot Concoction ItemStack
      */
-    public ItemStack createLeaprootConcoction() {
+    public static ItemStack createLeaprootConcoction() {
         ItemStack potion = new ItemStack(Material.POTION);
         PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
 

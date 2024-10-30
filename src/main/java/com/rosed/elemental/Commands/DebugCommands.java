@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import revxrsal.commands.annotation.Command;
 import revxrsal.commands.bukkit.actor.BukkitCommandActor;
+import revxrsal.commands.bukkit.annotation.CommandPermission;
 
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ public class DebugCommands {
     private final PlayerManager playerManager = PlayerManager.INSTANCE;
 
     @Command("playerlist")
+    @CommandPermission("elemental.operator")
     public void playerList(BukkitCommandActor commandSender) {
         // Command logic here
         if (!commandSender.isConsole()) return;
@@ -33,6 +35,7 @@ public class DebugCommands {
     }
 
     @Command("setelement")
+    @CommandPermission("elemental.operator")
     public void setElement(BukkitCommandActor commandSender, Player player, Element element) {
         playerManager.getPlayer(player.getUniqueId()).setElement(element);
     }

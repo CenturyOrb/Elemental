@@ -21,7 +21,6 @@ public class ElementActivateEvent implements Listener {
         if (event.getHand() != EquipmentSlot.HAND) return; // when clicking block, it fires once per hand
         if (!player.isSneaking()) return;
 
-
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             // player tries to use element
             // (1) doesn't have element or is on Cooldown, do nothing
@@ -35,7 +34,6 @@ public class ElementActivateEvent implements Listener {
             try  {
                 switch (element) {
                     case LEAP:
-                        player.sendMessage(ChatColor.GREEN + "Used LEAP");
                         playerManager.addCooldown(uuid);
                         Element.leap(player);
                         break;
