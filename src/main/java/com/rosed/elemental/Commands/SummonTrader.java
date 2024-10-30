@@ -60,7 +60,7 @@ public class SummonTrader {
      * Creates ItemStack of Leaproot Concoction
      * @return Leaproot Concoction ItemStack
      */
-    public ItemStack createLeaprootConcoction() {
+    public static ItemStack createLeaprootConcoction() {
         ItemStack potion = new ItemStack(Material.POTION);
         PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
 
