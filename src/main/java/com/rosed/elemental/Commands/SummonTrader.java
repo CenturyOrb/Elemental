@@ -40,6 +40,7 @@ public class SummonTrader {
         Villager trader = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
         List<MerchantRecipe> trades = new ArrayList<>();
         MerchantRecipe trade;
+        MerchantRecipe trade2;
         if (traderName == Trader.AMBROSIA) {
             trader.setCustomName(ChatColor.RED + "Ambrosia");
             trader.setProfession(Villager.Profession.CLERIC);
@@ -50,17 +51,15 @@ public class SummonTrader {
             trade = new MerchantRecipe(createLeaprootConcoction(), 9999); // Max uses of trade
             trade.addIngredient(new ItemStack(Material.DRAGON_EGG)); // The required item (Ender Dragon Egg)
             trades.add(trade);
+
+            trade2 = new MerchantRecipe(createFireballConcoction(), 9999); // Max uses of trade
+            trade2.addIngredient(new ItemStack(Material.DRAGON_EGG)); // The required item (Ender Flint and Steel)
+
+            trades.add(trade2);
+
             trader.setRecipes(trades);
         } else if (traderName == Trader.CINTHIA) {
-            trader.setCustomName(ChatColor.RED + "Cinthia");
-            trader.setCustomNameVisible(true);
-            trader.setInvulnerable(true);
-            trader.setAI(false);
-
-            trade = new MerchantRecipe(createFireballConcoction(), 9999); // Max uses of trade
-            trade.addIngredient(new ItemStack(Material.FLINT_AND_STEEL)); // The required item (Ender Dragon Egg)
-            trades.add(trade);
-            trader.setRecipes(trades);
+            player.sendMessage("Havent added Cinthia yet");
         }
     }
 

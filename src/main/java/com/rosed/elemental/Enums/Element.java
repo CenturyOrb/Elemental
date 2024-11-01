@@ -1,8 +1,12 @@
 package com.rosed.elemental.Enums;
 
+import com.rosed.elemental.Elemental;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 public enum Element {
     LEAP,
@@ -15,11 +19,13 @@ public enum Element {
     public static void fireball(Player player) {
         Fireball fireball = player.getWorld().spawn(player.getEyeLocation().add(player.getLocation().getDirection().multiply(1.5)), Fireball.class);
 
+        // PDC
+        PersistentDataContainer pdc = fireball.getPersistentDataContainer();
+        NamespacedKey key = new NamespacedKey(Elemental.getInstance(), "fireball");
+        pdc.set(key, PersistentDataType.STRING, "special_fireball");
+
         // Set the fireball's direction to match the player's looking direction
         fireball.setDirection(player.getLocation().getDirection());
 
-        // Optional: Set custom properties for the fireball (e.g., speed, explosion power)
-        fireball.setIsIncendiary(false); // Prevents setting blocks on fire
-        fireball.setYield(0); // Explosion power set to 0, so it doesn’t destroy blocks
     }
 }

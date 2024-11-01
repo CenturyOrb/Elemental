@@ -1,11 +1,11 @@
 com/rosed/elemental/Commands/DebugCommands.class
 com/rosed/elemental/Listeners/ElementActivateEvent.class
 com/rosed/elemental/PlayerManager.class
-com/rosed/elemental/Listeners/PlayerConnectionEvent.class
-com/rosed/elemental/Listeners/PlayerPotionConsume.class
 com/rosed/elemental/ElementalPlayer.class
-com/rosed/elemental/Listeners/TraderInteract.class
+com/rosed/elemental/Listeners/PlayerPotionConsume.class
+com/rosed/elemental/Listeners/PlayerConnectionEvent.class
 com/rosed/elemental/Enums/Element.class
+com/rosed/elemental/Listeners/FireballDamage.class
 com/rosed/elemental/Enums/Trader.class
 com/rosed/elemental/Listeners/ElementActivateEvent$1.class
 com/rosed/elemental/Elemental.class
