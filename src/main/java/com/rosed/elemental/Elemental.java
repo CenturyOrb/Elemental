@@ -5,16 +5,17 @@ import com.google.gson.Gson;
 import com.rosed.elemental.Commands.DebugCommands;
 import com.rosed.elemental.Commands.SummonTrader;
 import com.rosed.elemental.Listeners.ElementActivateEvent;
+import com.rosed.elemental.Listeners.FireballDamage;
 import com.rosed.elemental.Listeners.PlayerConnectionEvent;
 import com.rosed.elemental.Listeners.PlayerPotionConsume;
-import com.rosed.elemental.Listeners.PrepareSmithNetherite;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.*;
+import org.bukkit.inventory.CraftingRecipe;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 import revxrsal.commands.Lamp;
 import revxrsal.commands.bukkit.BukkitLamp;
 import revxrsal.commands.bukkit.actor.BukkitCommandActor;
@@ -28,6 +29,7 @@ public final class Elemental extends JavaPlugin {
 
     private static Elemental instance;
     private PlayerManager playerManager;
+    private static NamespacedKey key;
 
     private Gson gson;
     private File file;
@@ -35,11 +37,11 @@ public final class Elemental extends JavaPlugin {
     @Override
     public void onEnable() {
         // PDC
-        NamespacedKey key = new NamespacedKey(this, "elemental");
         instance = this;
         playerManager = PlayerManager.INSTANCE;
         registerEvents();
         registerCommands();
+        removeNetheriteIngotRecipe();
         loadJSON();
     }
 
@@ -64,7 +66,7 @@ public final class Elemental extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ElementActivateEvent(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerConnectionEvent(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerPotionConsume(), this);
-        Bukkit.getPluginManager().registerEvents(new PrepareSmithNetherite(), this);
+        Bukkit.getPluginManager().registerEvents(new FireballDamage(), this);
     }
 
     /**
@@ -131,6 +133,15 @@ public final class Elemental extends JavaPlugin {
         }
 
         getLogger().info("Disabled");
+    }
+
+    /**
+     * Removes crafting recipe for netherite_ingot
+     */
+    private void removeNetheriteIngotRecipe() {
+        for (Recipe recipe : Bukkit.getRecipesFor(new ItemStack(Material.NETHERITE_INGOT))) {
+            Bukkit.removeRecipe(((CraftingRecipe) recipe).getKey());
+        }
     }
 
     public static Elemental getInstance() { return instance; }

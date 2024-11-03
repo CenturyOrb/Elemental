@@ -2,10 +2,7 @@ package com.rosed.elemental.Commands;
 
 import com.rosed.elemental.Elemental;
 import com.rosed.elemental.Enums.Trader;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -16,6 +13,9 @@ import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import revxrsal.commands.annotation.Command;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
 
@@ -40,6 +40,7 @@ public class SummonTrader {
         Villager trader = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
         List<MerchantRecipe> trades = new ArrayList<>();
         MerchantRecipe trade;
+        MerchantRecipe trade2;
         if (traderName == Trader.AMBROSIA) {
             trader.setCustomName(ChatColor.RED + "Ambrosia");
             trader.setProfession(Villager.Profession.CLERIC);
@@ -50,6 +51,12 @@ public class SummonTrader {
             trade = new MerchantRecipe(createLeaprootConcoction(), 9999); // Max uses of trade
             trade.addIngredient(new ItemStack(Material.DRAGON_EGG)); // The required item (Ender Dragon Egg)
             trades.add(trade);
+
+            trade2 = new MerchantRecipe(createFireballConcoction(), 9999); // Max uses of trade
+            trade2.addIngredient(new ItemStack(Material.DRAGON_EGG)); // The required item (Ender Flint and Steel)
+
+            trades.add(trade2);
+
             trader.setRecipes(trades);
         } else if (traderName == Trader.CINTHIA) {
             player.sendMessage("Havent added Cinthia yet");
@@ -86,4 +93,35 @@ public class SummonTrader {
         return potion;
     }
 
+
+    /**
+     * Creates ItemStack of Fireball Concoction
+     * @return Fireball Concoction ItemStack
+     */
+    public ItemStack createFireballConcoction() {
+        ItemStack potion = new ItemStack(Material.POTION);
+        PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
+
+        potionMeta.setColor(Color.ORANGE);
+        potionMeta.setDisplayName(ChatColor.RED + "Fireball Concoction");
+        // PDC Key
+        NamespacedKey key = new NamespacedKey(Elemental.getInstance(), "elemental");
+        // PDC Meta
+        PersistentDataContainer pdc = potionMeta.getPersistentDataContainer();
+        pdc.set(key, PersistentDataType.STRING, "fireball");
+
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.DARK_PURPLE + "A mysterious potion");
+        lore.add("");
+        lore.add(ChatColor.GREEN + "- Grants ability to throw fireballs");
+        potionMeta.setLore(lore);
+
+        potionMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        potionMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        potionMeta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+
+        potion.setItemMeta(potionMeta);
+
+        return potion;
+    }
 }
