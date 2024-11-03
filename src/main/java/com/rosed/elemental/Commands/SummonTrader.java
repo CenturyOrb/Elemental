@@ -2,10 +2,7 @@ package com.rosed.elemental.Commands;
 
 import com.rosed.elemental.Elemental;
 import com.rosed.elemental.Enums.Trader;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -16,6 +13,9 @@ import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import revxrsal.commands.annotation.Command;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
 
@@ -102,6 +102,7 @@ public class SummonTrader {
         ItemStack potion = new ItemStack(Material.POTION);
         PotionMeta potionMeta = (PotionMeta) potion.getItemMeta();
 
+        potionMeta.setColor(Color.ORANGE);
         potionMeta.setDisplayName(ChatColor.RED + "Fireball Concoction");
         // PDC Key
         NamespacedKey key = new NamespacedKey(Elemental.getInstance(), "elemental");

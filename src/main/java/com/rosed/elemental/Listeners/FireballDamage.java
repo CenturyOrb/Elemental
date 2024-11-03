@@ -28,7 +28,7 @@ public class FireballDamage implements Listener {
                 World world = fireballLocation.getWorld();
                 if ("special_fireball".equals(value)) {
                     if(world != null) {
-                        world.createExplosion(fireballLocation, 15, false, false);
+                        world.createExplosion(fireballLocation, 1.2F, false, false);
                     }
                 }
             }
