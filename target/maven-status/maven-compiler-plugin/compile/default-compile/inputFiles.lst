@@ -8,4 +8,5 @@
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Listeners/FireballDamage.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Listeners/PlayerConnectionEvent.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Listeners/PlayerPotionConsume.java
+/home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/Listeners/PrepareSmithNetherite.java
 /home/rosed/Documents/GitHub/Elemental/src/main/java/com/rosed/elemental/PlayerManager.java
